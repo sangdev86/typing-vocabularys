@@ -1,0 +1,90 @@
+.keyboard-base {
+	max-width: 1085px;
+	padding: 20px;
+	/* position: absolute;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%, -10%); */
+	background-color: rgb(197, 197, 197);
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: repeat(30, 30px);
+	grid-template-rows: repeat(5, 60px);
+	grid-gap: 5px;
+	margin: 10px auto;
+	transform: scale(0.8);
+}
+
+.key {
+	background-color: rgb(243, 243, 243);
+	border: 2px solid black;
+	border-radius: 5px;
+	grid-column: span 2;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 17px;
+	cursor: pointer;
+}
+
+.key:hover {
+	border: 4px solid #eeeeee;
+}
+
+.selecting {
+	border: 2px solid red !important;
+	z-index: 100;
+}
+.pressing {
+	border: 4px solid rgb(197, 197, 197) !important;
+	border-radius: 10px;
+	z-index: 99;
+}
+.Backspace {
+	grid-column: span 4;
+}
+
+.Tab {
+	grid-column: span 3;
+}
+
+.\\ {
+	grid-column: span 3;
+}
+
+.CapsLock {
+	grid-column: span 4;
+}
+
+.Enter {
+	grid-column: span 4;
+}
+
+.leftShift, .rightShift {
+	grid-column: span 5;
+}
+
+.leftctrl {
+	grid-column: span 3;
+}
+
+.leftCommand,.rightCommand{
+	grid-column: span 3;
+	font-size: 14px;
+}
+
+.space {
+	grid-column: span 13;
+}
+.key-pratice {
+	display: flex;
+	flex-wrap: wrap;
+	font-weight: 400;
+	color: #8b8b8b;
+	font-size: 40px;
+	width: 58%;
+	margin: 20px auto;
+}
+
+.upcase {
+	text-transform: uppercase;
+}
