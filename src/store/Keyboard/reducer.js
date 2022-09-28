@@ -7,6 +7,7 @@ const initialstate = {
 
 const reducer = (state = initialstate, action) => {
 	const { payload } = action;
+
 	switch (action.type) {
 		case TYPE_KB.CHANGE_TEXT: {
 			const textUpdate = [...state.text];
@@ -23,6 +24,7 @@ const reducer = (state = initialstate, action) => {
 		case TYPE_KB.CHANGE_PRACTICE: {
 			return {
 				...state,
+
 				practice: payload,
 			};
 		}

@@ -34,6 +34,20 @@ const Submit = styled.input`
 		background-color: #5fa1d0;
 	}
 `;
+const IconX = styled.span`
+	position: absolute;
+	top: 2%;
+	left: 93%;
+	height: 15px;
+	width: 15px;
+	color: #f6f5f5;
+	background-color: #f73c3c;
+	border-radius: 50%;
+	cursor: pointer;
+	text-align: center;
+	font-size: 30px;
+	line-height: 10px;
+`;
 function Setting({ modal, handleModal, dispatch }) {
 	const [form, setForm] = useState({
 		letters: "",
@@ -47,7 +61,8 @@ function Setting({ modal, handleModal, dispatch }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		let arr = form.letters.split("");
+		let first = form.letters.split("");
+
 		let arrCharacter = [];
 		form.characters.split("").forEach((el) => {
 			if (el !== " ") {
@@ -64,23 +79,40 @@ function Setting({ modal, handleModal, dispatch }) {
 						-1
 				);
 				if (checkLetter) {
-					arr.push(...el.split(""));
-					arr.push(" ");
+					first.push(...el.split(""));
+					first.push(" ");
 				}
 			});
 		}
 
-		dispatch(createAction(TYPE_KB.CHANGE_PRACTICE, arr));
+		dispatch(createAction(TYPE_KB.CHANGE_PRACTICE, first));
 		handleModal();
+		setForm({ letters: "", characters: "" });
 	};
 
 	return (
 		<SettingStyle>
 			<CustomButton buttonPrimary onClick={handleModal}>
-				Setting
+				Add
 			</CustomButton>
-			<CustomButton>Reset</CustomButton>
+			<CustomButton
+				onClick={() =>
+					dispatch(
+						createAction(TYPE_KB.CHANGE_PRACTICE, [])
+					)
+				}
+			>
+				Reset
+			</CustomButton>
 			<Modal modal={modal}>
+				<IconX
+					onClick={() => {
+						handleModal();
+						setForm({ letters: "", characters: "" });
+					}}
+				>
+					-
+				</IconX>
 				<TitleForm>Setting</TitleForm>
 				<form onSubmit={handleSubmit} id="form">
 					<FormInput
