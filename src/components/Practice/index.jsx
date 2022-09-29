@@ -8,7 +8,7 @@ export default function Practice() {
 
 	const [position, setPosition] = React.useState([0, 0]);
 	const id = useId();
-	let page = 20;
+	let page = 30;
 	useEffect(() => {
 		let end = 0;
 		let endX = 0;
@@ -81,9 +81,9 @@ export default function Practice() {
 			{text.length === practice.length &&
 			practice.length > 0 ? (
 				<span>Congratulations !</span>
-			) : (
-				<span>Click Add to Start !</span>
-			)}
+			) : practice.length === 0 ? (
+				<span>Add to start !</span>
+			) : null}
 		</div>
 	);
 }
