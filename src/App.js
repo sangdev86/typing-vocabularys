@@ -5,8 +5,8 @@ import Practice from "./components/Practice";
 function App() {
 	return (
 		<div className="container">
-			<Keyboard />
 			<Practice />
+			<Keyboard />
 		</div>
 	);
 }

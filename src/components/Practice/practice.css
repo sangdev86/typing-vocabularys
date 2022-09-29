@@ -2,13 +2,14 @@
 max-width: 600px;
 display: flex;
 margin: 0 auto;
+flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 text-align: center;
 min-height: 230px;
 } 
 .pratice span {
-  font-size: 30px;
+  font-size: 35px;
   color: #757575;
 
 }

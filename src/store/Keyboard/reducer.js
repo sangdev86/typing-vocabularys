@@ -24,7 +24,7 @@ const reducer = (state = initialstate, action) => {
 		case TYPE_KB.CHANGE_PRACTICE: {
 			return {
 				...state,
-
+				text: [],
 				practice: payload,
 			};
 		}

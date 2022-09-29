@@ -14,7 +14,10 @@ export default function Keyboard() {
 	const [pressing, setPressing] = useState([]);
 	const [modal, setModal] = useState(false);
 
-	const { keyboardDispatch: dispatch } = useStore();
+	const {
+		keyboardDispatch: dispatch,
+		keyboardState: state,
+	} = useStore();
 	const pressKey = (el) => {
 		const indexF = pressing.findIndex(
 			(key) =>
@@ -41,7 +44,8 @@ export default function Keyboard() {
 			key !== "enter" &&
 			key !== "capslock" &&
 			key !== "alt" &&
-			modal === false
+			modal === false &&
+			state.practice.length > 0
 		) {
 			dispatch(createAction(TYPE_KB.CHANGE_TEXT, key));
 		}
@@ -70,6 +74,11 @@ export default function Keyboard() {
 
 	return (
 		<div>
+			<Setting
+				modal={modal}
+				handleModal={handleModal}
+				dispatch={dispatch}
+			/>
 			<div className="keyboard-base">
 				{arrKeyboard.map((el) => (
 					<div
@@ -82,11 +91,6 @@ export default function Keyboard() {
 					</div>
 				))}
 			</div>
-			<Setting
-				modal={modal}
-				handleModal={handleModal}
-				dispatch={dispatch}
-			/>
 		</div>
 	);
 }

@@ -6,22 +6,24 @@ export default function Practice() {
 	const { keyboardState: state } = useStore();
 	const { practice, text } = state;
 
-	const [position, setPosition] = React.useState([0, 50]);
+	const [position, setPosition] = React.useState([0, 0]);
 	const id = useId();
-	let page = 100;
+	let page = 20;
 	useEffect(() => {
 		let end = 0;
 		let endX = 0;
-
+		// debugger;
 		for (let i = end + page; i < end + page + 20; i++) {
 			if (practice[i] === " ") {
-				endX = i;
+				endX = i + 1;
 				if (i < end + 21) {
 					i = i + 20;
 				}
 			}
 		}
-
+		if (endX === 0) {
+			endX = practice.length;
+		}
 		setPosition([0, endX]);
 	}, [practice, page]);
 	const nextPage = () => {
@@ -30,7 +32,7 @@ export default function Practice() {
 
 		for (let i = end + page; i < end + page + 20; i++) {
 			if (practice[i] === " ") {
-				endX = i;
+				endX = i + 1;
 				if (i < end + 21) {
 					i = i + 20;
 				}
@@ -53,7 +55,7 @@ export default function Practice() {
 			return "correct";
 		}
 	};
-	// console.log("text", text);
+
 	return (
 		<div className="pratice">
 			<div>
@@ -68,7 +70,7 @@ export default function Practice() {
 									key={id + el + index}
 									className={checkTyping(index)}
 								>
-									{el}
+									{el === " " ? " " : el}
 								</span>
 							);
 						} else {
@@ -76,6 +78,12 @@ export default function Practice() {
 						}
 					})}
 			</div>
+			{text.length === practice.length &&
+			practice.length > 0 ? (
+				<span>Congratulations !</span>
+			) : (
+				<span>Click Add to Start !</span>
+			)}
 		</div>
 	);
 }
